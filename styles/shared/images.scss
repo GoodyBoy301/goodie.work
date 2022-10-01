@@ -1,0 +1,33 @@
+%about-images {
+  height: 10rem;
+  width: 34.2rem;
+  margin: 0 1.5rem;
+}
+%portal-images {
+  height: 10rem;
+  width: 45rem;
+  margin: 0 4.5rem 0 1.5rem;
+}
+%project-images {
+  height: 18.5rem;
+  width: 21.6rem;
+  &:first-of-type {
+    height: 24.9rem;
+  }
+  &:last-of-type {
+    height: 22.7rem;
+  }
+  @include media("<phone") {
+    height: clamp(0rem, 15.5rem, 150px);
+    width: clamp(0rem, 27rem, 380px);
+    margin: 0 auto;
+    display: none;
+    &:first-of-type {
+      height: clamp(0rem, 20.862rem, 200px);
+      display: unset;
+    }
+    &:last-of-type {
+      height: clamp(0rem, 19.019rem, 175px);
+    }
+  }
+}

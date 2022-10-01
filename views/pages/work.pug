@@ -1,0 +1,44 @@
+extends ../base.pug 
+
+block variables
+  - var template = "work"
+
+block content 
+  main.work
+    .work__wrapper 
+
+      section.work__heading
+        .work__heading__wrapper 
+          h1.work__heading__text Work
+          p.work__heading__subtext
+            | I did gain a little experience over the past year.
+            | The less boring stuffs are probably in my 
+            | playground
+
+      section.work__body
+        .work__experiences 
+          ul.work__experiences__wrapper 
+            li.work__experience 
+              p.work__experience__title(data-first-letter="F" data-other-letters="rikax") Frikax
+              p.work__experience__subdetails Frontend Developer (Mar '22 - Aug '22)
+              .work__experience__expand
+                p.work__experience__details 
+                  | Worked with talented designers and developers while transforming
+                  | designs into beautiful portfolio themes. Integrated a couple of
+                  | features in the web app.
+                .work__experience__extradetails
+                  p.work__experience__stack Next Js, Tailwind Css, Git/Github
+                  p.work__experience__role Frontend Developer (Mar '22 - Aug '22)
+
+            li.work__experience 
+              p.work__experience__title(data-first-letter="I" data-other-letters="ndependent") Independent
+              p.work__experience__subdetails Creative Developer (May '22 - present)
+              .work__experience__expand
+                p.work__experience__details 
+                  | Exploring different approaches to creating amazing websites while 
+                  | collaborating with amazing designers
+                .work__experience__extradetails
+                  p.work__experience__stack 
+                    | WebGl, GlSl, ThreeJs, gsap, waapi
+                    | object oriented javascript 
+                  p.work__experience__role Creative Developer (May '22 - present)

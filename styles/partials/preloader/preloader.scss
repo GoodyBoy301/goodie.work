@@ -1,0 +1,22 @@
+.preloader {
+  @extend %screen-full;
+  z-index: $z-9;
+  background: $color-white;
+  display: grid;
+  place-content: center;
+}
+
+.preloader__text {
+  @extend %title-45;
+  padding: 1.9rem;
+}
+.preloader__number {
+  @extend %title-45;
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  bottom: 9rem;
+  @include media("<phone") {
+    bottom: clamp(0rem, 5.8rem, 10vh);
+  }
+}

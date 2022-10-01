@@ -1,0 +1,23 @@
+.work {
+}
+.work__wrapper {
+}
+.work__heading {
+}
+.work__heading__wrapper {
+  @extend %title-page;
+}
+.work__heading__text {
+  @extend %title-80;
+}
+.work__heading__subtext {
+  @extend %text-20;
+  width: 45rem;
+  margin: 0 auto;
+
+  @include media("<phone") {
+    width: clamp(0rem, 30.1rem, 400px);
+  }
+}
+.work__body {
+}

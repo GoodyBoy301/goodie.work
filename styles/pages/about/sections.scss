@@ -1,0 +1,62 @@
+.about__sections__wrapper {
+  @include media("<phone") {
+    // height: 100vh;
+    display: grid;
+    margin-top: 42.5vh;
+    gap: clamp(0rem, 6.5rem, 65px);
+    position: absolute;
+    width: 100%;
+    z-index: $z-1;
+    bottom: 5rem;
+    top: 0;
+  }
+}
+.about_me {
+}
+.about__me__wrapper {
+  @extend %screen-about;
+  @include media("<phone") {
+    width: clamp(0rem, 20rem, 250px);
+    margin-left: 2.4rem;
+  }
+}
+.about__text {
+  @extend %title-150-x;
+  font-family: $font-serif;
+  display: inline;
+}
+.about__media {
+  display: inline-block;
+  @extend %about-images;
+  @include media("<phone") {
+    display: none;
+  }
+}
+.about__media[data-portal-image] {
+  @extend %portal-images;
+  display: inline-block;
+  @include media("<phone") {
+    display: none;
+  }
+
+  &:last-of-type {
+    width: 90rem;
+    margin: 0 6rem 0 auto;
+  }
+  &:first-of-type {
+    width: 50rem;
+    margin: 0 4.5rem;
+  }
+}
+.about__media__image {
+}
+.about__experience {
+}
+.about__experience__wrapper {
+  @extend %screen-about;
+  gap: 0.3rem;
+  @include media("<phone") {
+    width: clamp(0rem, 18rem, 250px);
+    margin-right: unset;
+  }
+}

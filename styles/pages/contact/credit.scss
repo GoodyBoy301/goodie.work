@@ -1,0 +1,25 @@
+.contact__credits {
+}
+.contact__credits__wrapper {
+  position: fixed;
+  left: 4.5rem;
+  top: 60vh;
+  bottom: 0;
+  display: grid;
+  gap: 1.5rem;
+  place-content: center;
+  @include media("<phone") {
+    display: none;
+  }
+}
+.contact__credit {
+  @extend %text-20;
+  display: flex;
+  gap: 1ch;
+}
+.contact__credit__task {
+}
+.contact__credit__link {
+  @extend %link;
+  font-weight: 500;
+}

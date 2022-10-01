@@ -1,0 +1,38 @@
+.playground {
+}
+.playground__wrapper {
+}
+.playground__heading {
+}
+.playground__heading__wrapper {
+  @extend %title-page;
+  @include media("<phone") {
+    overflow: hidden;
+  }
+}
+.playground__heading__text {
+  @extend %title-80;
+  span {
+    display: none;
+  }
+  span:first-of-type {
+    display: block;
+  }
+  @include media("<phone") {
+    display: flex;
+    gap: 0.3em;
+    span {
+      display: inline-block;
+    }
+  }
+}
+.playground__heading__subtext {
+  @extend %text-20;
+  width: 45rem;
+  margin: 0 auto;
+  @include media("<phone") {
+    width: clamp(0rem, 25.5rem, 300px);
+  }
+}
+.playground__body {
+}

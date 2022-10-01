@@ -1,0 +1,34 @@
+.navigation__credits {
+  margin-left: auto;
+}
+
+.navigation__credits__wrapper {
+  @extend %mobile;
+  display: grid;
+  gap: 1.55rem;
+  margin-top: 12.15rem;
+}
+
+.navigation__credit {
+  @extend %row;
+  @extend %text-14;
+  gap: 0.5ch;
+  justify-content: flex-end;
+  //letter-spacing: 0.075em;
+}
+
+.navigation__credit__task {
+}
+
+.navigation__credit__link {
+  font-weight: 500;
+}
+
+.navigation__footer {
+  z-index: $z-1;
+  position: relative;
+  @extend %mobile;
+  * {
+    color: $color-white;
+  }
+}

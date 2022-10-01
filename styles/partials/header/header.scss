@@ -1,0 +1,44 @@
+.header {
+  @extend %body;
+  @extend %row;
+  @extend %fixed;
+  top: 0;
+  @include media(">phone") {
+    padding-left: 3.7rem;
+  }
+}
+.cta {
+}
+.cta__wrapper {
+  @extend %row;
+  gap: 0.6rem;
+}
+.cta__icon {
+  @extend %icon-16;
+}
+
+.cta__text {
+  @extend %text-16;
+  width: 18.9rem;
+  @include media("<phone") {
+    width: 11.8rem;
+  }
+}
+.logo {
+  @extend %hard-center;
+  left: 30%;
+  right: 30%;
+  @include media("<phone") {
+    right: 7rem;
+    justify-content: flex-end;
+  }
+}
+.logo__text {
+  @extend %title-45;
+  @extend %link;
+  font-weight: 600;
+  text-transform: uppercase;
+  @include media("<phone") {
+    font-size: clamp(0rem, 2.6rem, 30px);
+  }
+}

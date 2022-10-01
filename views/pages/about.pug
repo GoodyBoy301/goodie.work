@@ -1,0 +1,50 @@
+extends ../base.pug 
+
+block variables
+  - var template = "about"
+
+block content
+  main.about
+    .about__wrapper 
+
+      .about__sections__wrapper
+        section.about_me
+          .about__me__wrapper
+            p.about__text Goodness Urama 
+            figure.about__media
+              img.about__media__image(src="images.png" alt="Goodness Urama") 
+            p.about__text (He/Goody) 
+            p.about__text Creative Developer 
+            p.about__text from Nigeria
+            figure.about__media
+              img.about__media__image(src="images.png" alt="Nigerian Flag")
+
+        section.about__mobile
+          .about__mobile__wrapper
+            figure.about__mobile__media(data-portal-image)
+              img.about__mobile__image(src="images.png" alt="Goodness Urama")
+
+        section.about__experience
+          .about__experience__wrapper
+            p.about__text Been Creating web 
+            p.about__text portals 
+            figure.about__media(data-portal-image)
+              img.about__media__image(src="images.png" alt="portal") 
+            p.about__text for
+            figure.about__media(data-portal-image)
+              img.about__media__image(src="images.png" alt="portal") 
+            p.about__text 365 days or 
+            p.about__text more
+            figure.about__media(data-portal-image)
+              img.about__media__image(src="images.png" alt="portal")
+
+      section.about__main 
+        section.about__heading
+          .about__heading__wrapper 
+            h1.about__heading__text About
+            p.about__heading__subtext
+              | When I'm not writing code, I'm probably moving
+              | some vectors/vertices around or planning world
+              | domination.
+        section.about__body 
+          .about__body__wrapper 

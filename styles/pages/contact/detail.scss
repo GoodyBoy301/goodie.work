@@ -1,0 +1,38 @@
+.contact__details {
+}
+.contact__details__wrapper {
+  position: fixed;
+  left: 108.8rem;
+  top: 60vh;
+  bottom: 0;
+  display: grid;
+  gap: 1.5rem;
+  place-content: center;
+  z-index: $z-3;
+  @include media("<phone") {
+    left: 2.4rem;
+    position: absolute;
+    margin: 2.5rem auto 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+    left: 0;
+    top: 42.5vh;
+  }
+}
+.contact__detail {
+  @extend %text-20;
+  display: flex;
+  gap: 1ch;
+  @include media("<phone") {
+    &:nth-of-type(2n) {
+      justify-content: flex-end;
+    }
+  }
+}
+.contact__detail__type {
+}
+.contact__detail__link {
+  @extend %link;
+  font-weight: 500;
+}

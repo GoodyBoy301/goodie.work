@@ -1,0 +1,92 @@
+%link {
+  text-decoration: none;
+  color: $color-black;
+}
+%whiten {
+  @include media("<phone") {
+    color: $color-white;
+  }
+}
+
+%attr-small {
+  @extend %text-18;
+  @extend %title-30;
+
+  // letter-spacing: 0.1em;
+}
+%attr-large {
+  @extend %title-200;
+  color: $color-half-white;
+  visibility: visible;
+}
+%attr-large-work {
+  @extend %title-150;
+  color: $color-black;
+  transition: color 0.2s $ease-out-expo;
+  visibility: visible;
+}
+%text-0 {
+  visibility: hidden;
+  font-size: 0;
+  &:before,
+  &:after {
+    visibility: visible;
+  }
+}
+
+%text-10 {
+  font-family: $font-sans;
+  font-size: 1rem;
+  font-weight: 400;
+}
+%text-14 {
+  // font-size: 1.6rem;
+  line-height: 1.2;
+  @include media("<phone") {
+    font-size: 1.4rem;
+  }
+}
+%text-16-m {
+  font-size: 0;
+  @include media("<phone") {
+    font-size: clamp(0rem, 1.6rem, 20px);
+    line-height: 1.25;
+  }
+}
+%text-16 {
+  font-size: 1.6rem;
+  line-height: 1.2;
+  @include media("<phone") {
+    font-size: 1rem;
+  }
+}
+%text-18 {
+  font-size: 1.8rem;
+  line-height: 1.2;
+  font-weight: 500;
+  @include media("<phone") {
+    font-size: 1.1rem;
+  }
+}
+%text-20 {
+  font-size: 2rem;
+  line-height: 1.2;
+  @include media("<phone") {
+    font-size: clamp(0rem, 1.4rem, 15px);
+  }
+}
+%text-22 {
+  font-size: 2rem;
+  line-height: 1.2;
+  @include media("<phone") {
+    font-size: clamp(0rem, 1.1rem, 15px);
+  }
+}
+%text-30 {
+  font-size: 3rem;
+  line-height: 1.5;
+  @include media("<phone") {
+    font-size: clamp(0rem, 0.9rem, 15px);
+    line-height: 1.2;
+  }
+}

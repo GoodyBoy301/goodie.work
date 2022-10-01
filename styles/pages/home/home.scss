@@ -1,0 +1,34 @@
+.home {
+}
+.home__wrapper {
+  @extend %hard-center;
+  height: 50vh;
+
+  @include media("<phone") {
+    margin: 7.5vh 0;
+  }
+}
+.home__heading {
+}
+.home__heading__wrapper {
+}
+.home__heading__text {
+  @include media("<phone") {
+    display: grid;
+    padding-top: 25%;
+  }
+}
+.home__heading__serif {
+  @extend %title-goodness;
+  font-style: italic;
+  font-family: $font-serif;
+  &::after {
+    content: attr(data-alt);
+  }
+}
+.home__heading__sans {
+  @extend %title-goodness;
+  &::before {
+    content: attr(data-alt);
+  }
+}

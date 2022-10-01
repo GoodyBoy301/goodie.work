@@ -1,0 +1,47 @@
+.about {
+}
+.about__wrapper {
+}
+.about__main {
+  height: 100vh;
+}
+.about__heading {
+}
+.about__heading__wrapper {
+  @extend %title-page;
+}
+.about__heading__text {
+  @extend %title-80;
+}
+.about__heading__subtext {
+  @extend %text-20;
+  width: 48.1rem;
+  margin: 0 auto;
+
+  @include media("<phone") {
+    width: clamp(0rem, 33.1rem, 400px);
+  }
+}
+
+.about__mobile {
+}
+.about__mobile__wrapper {
+  @extend %mobile;
+  width: 100%;
+  top: clamp(0rem, 27.5rem, 350px);
+  bottom: 5rem;
+  display: grid;
+  place-content: center;
+  position: fixed;
+}
+.about__mobile__media {
+  margin: 0 auto;
+  width: 20rem;
+  height: clamp(0rem, 25rem, 250px);
+}
+.about__mobile__image {
+}
+.about__body {
+}
+.about__body__wrapper {
+}

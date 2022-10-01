@@ -1,0 +1,14 @@
+.footer {
+}
+.footer__wrapper {
+  @extend %fixed;
+  @extend %hard-center;
+  bottom: 3.3rem;
+  //letter-spacing: 0.05em;
+  @include media("<phone") {
+    bottom: clamp(0rem, 2.7rem, 30px);
+  }
+}
+.footer__text {
+  @extend %text-16;
+}

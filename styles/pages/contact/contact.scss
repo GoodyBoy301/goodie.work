@@ -1,0 +1,42 @@
+.contact {
+}
+.contact__wrapper {
+  @extend %hard-center;
+  height: 50vh;
+  pointer-events: none;
+
+  @include media("<phone") {
+    margin: 5vh;
+    height: 45vh;
+  }
+}
+.contact__heading {
+  pointer-events: none;
+}
+.contact__heading__wrapper {
+}
+.contact__heading__text {
+  display: flex;
+  gap: 5rem;
+  @include media("<phone") {
+    display: grid;
+    gap: unset;
+  }
+}
+.contact__heading__serif {
+  @extend %title-goodness;
+  font-style: italic;
+  font-family: $font-serif;
+  &::after {
+    content: attr(data-alt);
+  }
+}
+.contact__heading__sans {
+  @extend %title-goodness;
+  &::before {
+    content: attr(data-alt);
+  }
+}
+.contact__body {
+  pointer-events: auto;
+}

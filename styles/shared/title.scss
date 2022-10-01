@@ -1,0 +1,78 @@
+%title-30 {
+  @include media("<phone") {
+    font-size: clamp(0rem, 3rem, 45px);
+    font-weight: 500;
+    word-spacing: 0.25em;
+  }
+}
+%title-45 {
+  font-size: 4.5rem;
+  font-weight: 500;
+  word-spacing: 0.25em;
+  @include media("<phone") {
+    font-size: clamp(0rem, 4.5rem, 60px);
+  }
+}
+%title-80 {
+  font-size: clamp(0rem, 8rem, 100px);
+  font-family: $font-serif;
+  font-style: italic;
+}
+%title-150-x {
+  font-size: 15rem;
+  font-weight: 300;
+  // word-spacing: 0.25em;
+  @include media("<phone") {
+    font-size: clamp(0rem, 1.75rem, 25px);
+  }
+}
+%title-150 {
+  font-size: 15rem;
+  font-weight: 400;
+  word-spacing: 0.25em;
+  @include media("<phone") {
+    font-size: clamp(0rem, 2.4rem, 25px);
+  }
+}
+%title-200 {
+  font-size: 20rem;
+  font-weight: 400;
+  word-spacing: 0.25em;
+  @include media("<phone") {
+    font-size: clamp(0rem, 4.5rem, 60px);
+  }
+}
+%title-225 {
+  font-size: 22.5rem;
+  font-weight: 400;
+  word-spacing: 0.25em;
+  @include media("<phone") {
+    font-size: clamp(0rem, 8rem, 100px);
+  }
+}
+%title-goodness {
+  @extend %text-0;
+  @include media("<phone") {
+    font-size: clamp(0rem, 8rem, 100px);
+    visibility: visible;
+    &:before,
+    &:after {
+      display: none;
+    }
+  }
+  &::after,
+  &::before {
+    @extend %title-225;
+  }
+}
+%title-page {
+  @extend %hard-center;
+  height: 50vh;
+  display: grid;
+  gap: 2rem;
+  pointer-events: none;
+  @include media("<phone") {
+    height: 55vh;
+    gap: 1rem;
+  }
+}

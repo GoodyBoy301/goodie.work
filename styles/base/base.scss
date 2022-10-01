@@ -1,0 +1,28 @@
+html {
+  font-size: calc(100vw / 1440 * 10);
+  @include media("<phone") {
+    font-size: calc(100vw / 360 * 10);
+  }
+}
+
+body {
+  @extend %text-10;
+  @extend %light-theme;
+  min-height: 100vh;
+  user-select: none;
+  -webkit-user-drag: none;
+
+  @include media("<phone") {
+    // font-weight: 900;
+  }
+}
+
+::-webkit-scrollbar {
+  display: none !important;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

@@ -1,0 +1,21 @@
+extends ../base.pug 
+
+block variables
+  - var template = "home"
+
+block content 
+  main.home
+    .home__wrapper 
+
+      section.home__heading
+        .home__heading__wrapper 
+          h1.home__heading__text 
+            span.home__heading__serif(data-alt="Good") Goody
+            span.home__heading__sans(data-alt="Ness") Boy
+
+      section.home__body 
+        .home__body__wrapper 
+            p.home__text__01 
+             | Creative Developer from Nigeria 
+            p.home__text__02 
+             | Passionate about motion, interactivity them for building immersive, memorable web experiences

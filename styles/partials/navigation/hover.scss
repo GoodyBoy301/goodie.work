@@ -1,0 +1,77 @@
+.navigation {
+  position: relative;
+  z-index: $z-1;
+}
+.navigation__menu {
+  z-index: $z-1;
+  position: relative;
+  @extend %mobile;
+  * {
+    color: $color-white;
+    fill: $color-white;
+  }
+}
+.navigation__hover {
+  pointer-events: none;
+  .navigation__wrapper {
+    background: $color-black;
+    z-index: $z-1;
+    // height: 100vh;
+    // top: 0;
+    @include media("<phone") {
+      // top: calc(50vh - 30rem / 2);
+      top: 25vh;
+      background: transparent;
+    }
+  }
+
+  * {
+    color: $color-white;
+  }
+
+  .list__index {
+    @include media(">phone") {
+      color: $color-half-white;
+    }
+  }
+  .navigation__list,
+  .navigation__credits {
+    @include media("<phone") {
+      display: none;
+    }
+  }
+  .navigation__hover__list {
+    display: flex;
+  }
+}
+.navigation__hover__list {
+  @extend %hard-center;
+  @extend %row;
+  display: none;
+}
+.navigation__hover__item {
+  @extend %hard-center;
+  @extend %title-200;
+  display: flex;
+  background: $color-black;
+  position: absolute;
+  left: 50%;
+  visibility: hidden;
+  width: 1em;
+  font-size: 0;
+
+  &::before {
+    @extend %attr-large;
+    font-family: $font-serif;
+    content: attr(data-first-letter);
+    transform: translateY(-0.75rem);
+    @include media("<phone") {
+      transform: unset;
+    }
+  }
+
+  &::after {
+    @extend %attr-large;
+    content: attr(data-other-letters);
+  }
+}

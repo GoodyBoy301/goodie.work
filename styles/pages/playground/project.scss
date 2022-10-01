@@ -1,0 +1,134 @@
+.playground__projects {
+  // overflow: hidden;
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+}
+.playground__projects__wrapper {
+  // margin: 0 4.3rem;
+  display: flex;
+  position: absolute;
+  top: 65vh;
+  gap: 4.3rem;
+  @include media("<phone") {
+    top: 47.5vh;
+    gap: unset;
+  }
+}
+.playground__project {
+  display: flex;
+  &:first-of-type {
+    margin-left: 4.3rem;
+    @include media("<phone") {
+      margin-left: 0.5rem;
+    }
+  }
+  &:last-of-type {
+    margin-right: 4.3rem;
+    @include media("<phone") {
+      margin-right: 0.5rem;
+    }
+  }
+  gap: 1.9rem;
+  @include media("<phone") {
+    flex-direction: column-reverse;
+    margin: unset;
+    position: relative;
+    gap: clamp(0rem, 1.9rem, 20px);
+    width: clamp(0rem, 28rem, 400px);
+  }
+}
+.playground__project__description {
+  @extend %link;
+  display: grid;
+  gap: 1rem;
+  height: 18.5rem;
+  @include media("<phone") {
+    gap: unset;
+    height: clamp(0rem, 8.784rem, 100px);
+    width: clamp(0rem, 28rem, 380px);
+    padding-left: 0.57rem;
+    margin: 0 auto;
+  }
+}
+.playground__project__title {
+  @extend %text-30;
+  @include media("<phone") {
+    font-size: clamp(0rem, 2.4rem, 25px);
+    width: clamp(0rem, 24.9rem, 380px);
+  }
+}
+.playground__project__details {
+  @extend %text-20;
+  width: clamp(0rem, 24.9rem, 380px);
+  min-height: 5rem;
+  margin-bottom: 0.3rem;
+  &[data-width-less] {
+    width: 17.5rem;
+  }
+  @include media("<phone") {
+    // margin-bottom: unset;
+    min-height: unset;
+    font-size: clamp(0rem, 1.1rem, 15px);
+    width: unset;
+  }
+}
+.playground__project__stack {
+  @extend %text-20;
+  color: $color-75-black;
+  display: flex;
+  gap: 0.5rem;
+  span {
+    &:not(:last-of-type)::after {
+      content: ",";
+    }
+  }
+  @include media("<phone") {
+    font-size: clamp(0rem, 1.1rem, 15px);
+    color: $color-black;
+    gap: 0.5rem;
+    span {
+      background: $color-25-black;
+      display: grid;
+      place-content: center;
+      padding: 0 1rem;
+      border-radius: 1rem;
+      &:not(:last-of-type)::after {
+        content: "";
+      }
+    }
+  }
+}
+.playground__project__action {
+}
+.playground__action__wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  @include media("<phone") {
+    display: none;
+  }
+}
+.playground__action__icon {
+  @extend %icon-20;
+  @include media("<phone") {
+    display: none;
+  }
+}
+.playground__action__text {
+  @extend %text-20;
+  @include media("<phone") {
+    font-size: clamp(0rem, 1.2rem, 15px);
+    // display: none;
+    color: $color-black;
+  }
+}
+.playground__project__medias {
+  display: flex;
+  gap: 0.6rem;
+}
+.playground__project__media {
+  @extend %project-images;
+}
+.playground__project__image {
+}

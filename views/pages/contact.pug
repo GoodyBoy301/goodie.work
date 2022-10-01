@@ -1,0 +1,51 @@
+extends ../base.pug 
+
+block variables
+  - var template = "contact"
+
+block content 
+  main.contact
+    .contact__wrapper 
+
+      section.contact__heading
+        .contact__heading__wrapper 
+          h1.contact__heading__text 
+            span.contact__heading__serif(data-alt="Say") Say
+            span.contact__heading__sans(data-alt="Hi") Hi
+
+      section.contact__body 
+        address.contact__credits 
+          ul.contact__credits__wrapper 
+            li.contact__credit 
+              p.contact__credit__task Inspired By:
+              a.contact__credit__link(href="https://huyml.co") Huy Phan
+
+            li.contact__credit 
+              p.contact__credit__task Developed By:
+              a.contact__credit__link(href="https://twitter.com/goody__boy") Goodness
+
+            li.contact__credit 
+              p.contact__credit__task Fonts From:
+              a.contact__credit__link(href="https://fontshare.com") FontShare
+
+            li.contact__credit 
+              p.contact__credit__task Models:
+              a.contact__credit__link(href="https://twitter.com/goody__boy") Goodness
+
+        .contact__details 
+          ul.contact__details__wrapper 
+            li.contact__detail 
+              p.contact__detail__type Twitter
+              a.contact__detail__link(href="https://twitter.com/goody__boy") @goody__boy
+
+            li.contact__detail 
+              p.contact__detail__type Github
+              a.contact__detail__link(href="https://github.com/goodybooy301") /goodyboy301
+
+            li.contact__detail 
+              p.contact__detail__type Read Cv
+              a.contact__detail__link(href="https://read.cv/goody") /goody
+
+            li.contact__detail 
+              p.contact__detail__type Gmail
+              a.contact__detail__link(href="mailto:goodyboy.work@gmail.com") goodyboy.work

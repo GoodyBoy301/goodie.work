@@ -1,0 +1,19 @@
+.version {
+  @extend %desktop;
+}
+.version__wrapper {
+  width: 6.4rem;
+}
+.version__title {
+  @extend %text-16;
+}
+.version__details {
+  @extend %row;
+  justify-content: space-evenly;
+}
+.version__icon {
+  @extend %icon-24;
+}
+.version__number {
+  @extend %text-16;
+}

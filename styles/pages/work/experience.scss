@@ -1,0 +1,136 @@
+.work__experiences {
+}
+.work__experiences__wrapper {
+  @extend %fixed;
+  color: $color-white;
+  display: grid;
+  top: calc(50vh + 17.3rem / 2);
+  bottom: 0;
+  cursor: pointer;
+  @include media("<phone") {
+    top: 50vh;
+  }
+}
+.work__experience {
+  @extend %row;
+  @extend %body;
+  padding-top: unset;
+  height: 100%;
+  position: relative;
+  background: $color-white;
+  transition: background 0.2s $ease-out-expo;
+  @include media("<phone") {
+    align-items: flex-start;
+    padding: 1.6rem 3rem;
+    background: unset;
+  }
+
+  @include media(">phone") {
+    &:hover {
+      background: $color-black;
+      %attr-large-work {
+        color: $color-half-white;
+      }
+      .work__experience__expand {
+        opacity: 1;
+      }
+      .work__experience__subdetails {
+        opacity: 0;
+        color: $color-white;
+        transform: scale(0);
+      }
+      .work__experience__title {
+        &::before,
+        &::after {
+          opacity: 0.5;
+        }
+      }
+    }
+  }
+}
+.work__experience__title {
+  @extend %title-150;
+  display: flex;
+  position: absolute;
+  visibility: hidden;
+  width: 1em;
+  font-size: 0;
+
+  &::before {
+    @extend %attr-large-work;
+    font-family: $font-serif;
+    content: attr(data-first-letter);
+    transform: translateY(-0.5rem);
+    @include media("<phone") {
+      transform: translateY(-0.075rem);
+    }
+  }
+
+  &::after {
+    @extend %attr-large-work;
+    content: attr(data-other-letters);
+  }
+}
+.work__experience__subdetails {
+  @extend %text-30;
+  color: $color-black;
+  position: absolute;
+  left: 102.9rem;
+  width: 34.8rem;
+  opacity: 1;
+  transition: all 0.2s $ease-out-expo;
+  transform-origin: 100% 100%;
+
+  @include media("<phone") {
+    transition: unset;
+    position: unset;
+    width: clamp(0rem, 9rem, 150px);
+    padding-top: clamp(0rem, 2.75rem, 30px);
+  }
+}
+.work__experience__expand {
+  opacity: 0;
+  transition: opacity 0.2s $ease-out-expo;
+  position: absolute;
+  left: 70.5rem;
+  width: 65.9rem;
+  display: grid;
+  padding: 3rem;
+  gap: 1.5rem;
+  @include media("<phone") {
+    left: 52.5vw;
+    opacity: 1;
+    color: $color-black;
+    padding: unset;
+    gap: 0.5rem;
+  }
+}
+.work__experience__details {
+  @extend %text-22;
+  width: 65.9rem;
+  @include media("<phone") {
+    width: 13.5rem;
+  }
+}
+.work__experience__extradetails {
+  @extend %text-16;
+  @extend %row;
+  text-transform: uppercase;
+  width: 65.9rem;
+  color: $color-half-white;
+  align-items: flex-start;
+  @include media("<phone") {
+    width: 13.5rem;
+    color: $color-half-black;
+    font-size: clamp(0rem, 0.9rem, 10px);
+  }
+}
+.work__experience__stack {
+  width: 34rem;
+}
+.work__experience__role {
+  width: 34rem;
+  @include media("<phone") {
+    display: none;
+  }
+}
