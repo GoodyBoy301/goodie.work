@@ -127,6 +127,9 @@
 }
 .work__experience__stack {
   width: 34rem;
+  @include media("<phone") {
+    color: $color-75-black;
+  }
 }
 .work__experience__role {
   width: 34rem;

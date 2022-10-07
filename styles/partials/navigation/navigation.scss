@@ -9,6 +9,7 @@
   top: calc(50vh - 17.3rem / 2);
   // z-index: $z-1;
   @include media("<phone") {
+    transition: background 0.2s 0.2s;
     background: $color-black;
     height: 100vh;
     top: 0;
@@ -28,7 +29,7 @@
     gap: clamp(0rem, 3rem, 45px);
   }
 }
-.navigation_list_item {
+.navigation__list__item {
   @include media("<phone") {
     // display: flex;
   }

@@ -1,6 +1,10 @@
 .navigation {
   position: relative;
-  z-index: $z-1;
+  z-index: $z-4;
+  @include media("<phone") {
+    opacity: 0;
+    display: none;
+  }
 }
 .navigation__menu {
   z-index: $z-1;
@@ -16,12 +20,25 @@
   .navigation__wrapper {
     background: $color-black;
     z-index: $z-1;
-    // height: 100vh;
-    // top: 0;
+    height: 100vh;
+    top: 0;
+    opacity: 0;
+    &:before {
+      content: "";
+      width: 100vw;
+      height: 20em;
+      top: calc(50vh + 20rem / 2);
+      background: $color-black;
+      position: absolute;
+      z-index: $z-1;
+    }
     @include media("<phone") {
       // top: calc(50vh - 30rem / 2);
       top: 25vh;
       background: transparent;
+      &::before {
+        display: none;
+      }
     }
   }
 

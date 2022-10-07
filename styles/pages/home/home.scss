@@ -1,4 +1,5 @@
 .home {
+  pointer-events: none;
 }
 .home__wrapper {
   @extend %hard-center;

@@ -1,8 +1,9 @@
 .playground__projects {
-  // overflow: hidden;
+  overflow: hidden;
   position: relative;
   width: 100vw;
   height: 100vh;
+  pointer-events: none;
 }
 .playground__projects__wrapper {
   // margin: 0 4.3rem;
@@ -10,6 +11,7 @@
   position: absolute;
   top: 65vh;
   gap: 4.3rem;
+  pointer-events: auto;
   @include media("<phone") {
     top: 47.5vh;
     gap: unset;

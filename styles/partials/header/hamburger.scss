@@ -3,6 +3,9 @@
   display: none;
   @include media("<phone") {
     display: block;
+    &:hover {
+      cursor: pointer;
+    }
   }
 }
 .hamburger__wrapper {
