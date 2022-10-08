@@ -1,4 +1,5 @@
 html {
+  overflow: hidden;
   font-size: calc(100vw / 1440 * 10);
   @include media("<phone") {
     font-size: calc(100vw / 360 * 10);
