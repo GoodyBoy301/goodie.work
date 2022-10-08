@@ -4,11 +4,15 @@
   background: $color-white;
   display: grid;
   place-content: center;
+  transform-origin: 100%;
 }
 
 .preloader__text {
   @extend %title-45;
   padding: 1.9rem;
+  span {
+    display: inline-block;
+  }
 }
 .preloader__number {
   @extend %title-45;
