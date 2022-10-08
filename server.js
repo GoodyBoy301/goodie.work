@@ -33,3 +33,5 @@ app.listen(port, () => {
     `\x1b[4mhttp://localhost:${port}\x1b[0m`
   );
 });
+
+module.exports = app;
