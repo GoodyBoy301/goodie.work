@@ -2,8 +2,7 @@
   "name": "goodie.work",
   "version": "2.0.22",
   "scripts": {
-    "start": "npm run backend:build",
-    "build": "npm run frontend:build",
+    "start": "concurrently --kill-others \"npm run frontend:build\" \"npm run backend:build\"",
     "dev": "concurrently --kill-others \"npm run backend:dev\" \"npm run frontend:dev\"",
     "frontend:dev": "webpack serve --progress --config webpack.config.dev.js",
     "frontend:build": "webpack --progress --config webpack.config.prod.js",
