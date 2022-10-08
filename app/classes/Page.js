@@ -1,44 +1,15 @@
-const navigationSelectors = {
-  home: "#home",
-  work: "#work",
-  about: "#about",
-  playground: "#playground",
-  contact: "#contact",
-};
-const navigationHoverSelectors = {
-  home: "#hoverHome",
-  work: "#hoverWork",
-  about: "#hoverAbout",
-  playground: "#hoverPlayground",
-  contact: "#hoverContact",
-};
-
-const pageElements = {
-  navWrapper: ".navigation__wrapper",
-  navHover: ".navigation__hover__list",
-  hamburger: ".hamburger",
-};
+import gsap from "gsap";
 
 export default class Page {
   constructor({ element, elements, id }) {
-    this.selector = element;
-    this.childrenSelectors = { ...elements, ...pageElements };
     this.id = id;
-  }
-
-  create() {
-    this.element = document.querySelector(this.selector);
-    this.navigationElements = {};
-    this.navigationHoverElements = {};
+    this.element = document.querySelector(element);
     this.elements = {};
 
-    this.storePageAssets(this.navigationElements, navigationSelectors);
-    this.storePageAssets(
-      this.navigationHoverElements,
-      navigationHoverSelectors
-    );
-    this.storePageAssets(this.elements, this.childrenSelectors);
+    this.storePageAssets(this.elements, { ...elements });
   }
+
+  create() {}
 
   storePageAssets(collection, entries) {
     Object.entries(entries).forEach(([key, value]) => {

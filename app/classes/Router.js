@@ -1,15 +1,5 @@
-import navigationHover from "animations/navigationHover";
-import * as pageTransition from "animations/pageTransition";
-
 export default class Router {
-  constructor(app) {
-    this.app = app;
-    this.addTransitions();
-  }
-
-  reCalculate() {
-    this.addTransitions();
-  }
+  constructor() {}
 
   async go({ target }) {
     const { href } = target;
@@ -24,15 +14,5 @@ export default class Router {
     } else {
       console.log(`could not fetch ${href}`);
     }
-  }
-
-  addTransitions() {
-    const [navWrapper, rectWrapper] = this.app.page.elements.navWrapper;
-    const rect = rectWrapper.getBoundingClientRect();
-    navWrapper.style.opacity = 1;
-
-    this.hover = navigationHover(navWrapper, rect);
-    this.transitionOut = pageTransition.leave(navWrapper);
-    this.transitionIn = pageTransition.enter(navWrapper);
   }
 }
