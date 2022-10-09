@@ -20,9 +20,9 @@
   }
   @include media("<phone") {
     display: flex;
-    gap: 0.3em;
     span {
       display: inline-block;
+      padding: 0 3rem;
     }
   }
 }
