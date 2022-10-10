@@ -1,6 +1,7 @@
 import Page from "classes/Page";
 import { lerp, clamp } from "utils/math";
 import Prefix from "prefix";
+import NormalizeWheel from "normalize-wheel";
 
 export default class Playground extends Page {
   constructor() {
@@ -27,6 +28,7 @@ export default class Playground extends Page {
     this.scroll = {
       current: 0,
       target: 0,
+      last: { x: 0, y: 0 },
       limit: this.elements.projectWrapper.clientWidth - window.innerWidth,
     };
     this.marquee = [];
@@ -47,16 +49,43 @@ export default class Playground extends Page {
   }
 
   onMousewheel(event) {
-    const { deltaX, deltaY } = event;
-    this.scroll.target += deltaY + deltaX;
-    this.scroll.target = clamp(0, this.scroll.target, this.scroll.limit);
-    if (this.scroll.target < 0) this.scroll.target = 0;
+    const { pixelX, pixelY } = NormalizeWheel(event);
+    const pixel = clamp(
+      0,
+      this.scroll.target + pixelY + pixelX,
+      this.scroll.limit
+    );
+    this.scroll.target = pixel < 0 ? 0 : pixel;
+  }
+
+  onTouchDown(event) {
+    this.isDown = true;
+    const clientX = event.clientX || event.touches[0]?.clientX;
+    const clientY = event.clientY || event.touches[0]?.clientY;
+    this.scroll.last.x = clientX;
+    this.scroll.last.y = clientY;
+  }
+
+  onTouchMove(event) {
+    if (!this.isDown) return;
+    const clientX = event.clientX || event.touches[0]?.clientX;
+    const clientY = event.clientY || event.touches[0]?.clientY;
+    const client = this.scroll.last.x - clientX + this.scroll.last.y - clientY;
+    const pixel = clamp(0, this.scroll.target + client, this.scroll.limit);
+    this.scroll.target = pixel < 0 ? 0 : pixel;
+  }
+
+  onTouchUp() {
+    this.isDown = false;
   }
 
   smoothScroll() {
-    this.scroll.current = lerp(this.scroll.current, this.scroll.target, 0.1);
-    this.scroll.current = clamp(0, this.scroll.limit, this.scroll.current);
-    if (this.scroll.current < 0.1) this.scroll.current = 0;
+    const scrollTo = clamp(
+      0,
+      this.scroll.limit,
+      lerp(this.scroll.current, this.scroll.target, 0.1)
+    );
+    this.scroll.current = scrollTo < 0.01 ? 0 : scrollTo;
     this.elements.projectWrapper.style[
       this.transformPrefix
     ] = `translateX(-${this.scroll.current}px)`;
@@ -78,8 +107,14 @@ export default class Playground extends Page {
 
   addEventListeners() {
     window.addEventListener("mousewheel", this.onMousewheel.bind(this));
+    window.addEventListener("touchstart", this.onTouchDown.bind(this));
+    window.addEventListener("touchmove", this.onTouchMove.bind(this));
+    window.addEventListener("touchend", this.onTouchUp.bind(this));
   }
   removeEventListeners() {
     window.removeEventListener("mousewheel", this.onMousewheel.bind(this));
+    window.removeEventListener("touchstart", this.onTouchDown.bind(this));
+    window.removeEventListener("touchmove", this.onTouchMove.bind(this));
+    window.removeEventListener("touchend", this.onTouchUp.bind(this));
   }
 }
