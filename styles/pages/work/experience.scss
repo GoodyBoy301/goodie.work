@@ -15,6 +15,7 @@
   @extend %row;
   @extend %body;
   padding-top: unset;
+  color: $color-75-black;
   height: 100%;
   position: relative;
   background: $color-white;
@@ -27,23 +28,23 @@
 
   @include media(">phone") {
     &:hover {
-      background: $color-black;
+      background: $color-25-black;
       %attr-large-work {
-        color: $color-half-white;
+        color: $color-half-black;
       }
       .work__experience__expand {
         opacity: 1;
+        color: $color-black;
       }
       .work__experience__subdetails {
-        opacity: 0;
-        color: $color-white;
-        transform: scale(0);
+        // opacity: 0;
+        // color: $color-white;
+        // transform: scale(0);
+        clip-path: polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%);
       }
-      .work__experience__title {
-        &::before,
-        &::after {
-          opacity: 0.5;
-        }
+      .work__experience__title[data-long] {
+        right: 167.5rem;
+        position: absolute;
       }
     }
   }
@@ -55,20 +56,28 @@
   visibility: hidden;
   width: 1em;
   font-size: 0;
+  transition: all 1s;
+  &[data-long] {
+    right: 140rem;
+    @include media("<phone") {
+      right: unset;
+    }
+  }
 
   &::before {
     @extend %attr-large-work;
     font-family: $font-serif;
     content: attr(data-first-letter);
-    transform: translateY(-0.5rem);
+    transform: translateY(1rem);
     @include media("<phone") {
-      transform: translateY(-0.075rem);
+      transform: translateY(0.075rem);
     }
   }
 
   &::after {
     @extend %attr-large-work;
     content: attr(data-other-letters);
+    font-weight: 250;
   }
 }
 .work__experience__subdetails {
@@ -78,7 +87,8 @@
   left: 102.9rem;
   width: 34.8rem;
   opacity: 1;
-  transition: all 0.2s $ease-out-expo;
+  // transition: all 0.2s $ease-out-expo;
+  transition: all 5s;
   transform-origin: 100% 100%;
 
   @include media("<phone") {
@@ -117,8 +127,9 @@
   @extend %row;
   text-transform: uppercase;
   width: 65.9rem;
-  color: $color-half-white;
+  color: $color-black;
   align-items: flex-start;
+
   @include media("<phone") {
     width: 13.5rem;
     color: $color-half-black;
