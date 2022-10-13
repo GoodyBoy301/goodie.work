@@ -12,10 +12,6 @@ body {
   min-height: 100vh;
   user-select: none;
   -webkit-user-drag: none;
-
-  @include media("<phone") {
-    // font-weight: 900;
-  }
 }
 
 ::-webkit-scrollbar {

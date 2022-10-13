@@ -8,6 +8,7 @@
   @extend %title-page;
   @include media("<phone") {
     overflow: hidden;
+    min-height: 35rem;
   }
 }
 .playground__heading__text {

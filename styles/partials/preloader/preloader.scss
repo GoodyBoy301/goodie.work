@@ -9,6 +9,7 @@
 
 .preloader__text {
   @extend %title-45;
+  font-weight: 400;
   padding: 1.9rem;
   span {
     display: inline-block;
@@ -16,6 +17,7 @@
 }
 .preloader__number {
   @extend %title-45;
+  font-weight: 400;
   position: absolute;
   width: 100%;
   text-align: center;

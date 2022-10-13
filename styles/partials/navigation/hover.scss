@@ -81,7 +81,7 @@
     @extend %attr-large;
     font-family: $font-serif;
     content: attr(data-first-letter);
-    transform: translateY(-0.75rem);
+    transform: translateY(1rem);
     @include media("<phone") {
       transform: unset;
     }
@@ -90,5 +90,6 @@
   &::after {
     @extend %attr-large;
     content: attr(data-other-letters);
+    font-weight: 250;
   }
 }

@@ -3,13 +3,22 @@ import gsap from "gsap";
 export default class Page {
   constructor({ element, elements, id }) {
     this.id = id;
-    this.element = document.querySelector(element);
-    this.elements = {};
-
-    this.storePageAssets(this.elements, { ...elements });
+    this.selector = element;
+    this.children = { ...elements };
   }
 
-  create() {}
+  /** Life Cycle */
+  create() {
+    this.element = document.querySelector(this.selector);
+    this.elements = {};
+    this.storePageAssets(this.elements, this.children);
+    this.addEventListeners && this.addEventListeners();
+  }
+
+  destroy() {
+    this.removeEventListeners && this.removeEventListeners();
+    gsap.to(this.element, { autoAlpha: 0 });
+  }
 
   storePageAssets(collection, entries) {
     Object.entries(entries).forEach(([key, value]) => {

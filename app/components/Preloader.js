@@ -21,8 +21,9 @@ export default class Preloader extends Component {
     const { images } = this.elements;
     if (images) {
       images.forEach((element, index) => {
-        element.src = element.getAttribute("data-src");
-        element.onload = (_) => this.onAssetLoaded(element);
+        const image = new Image();
+        image.src = element.getAttribute("src");
+        image.onload = () => this.onAssetLoaded(element);
       });
     } else {
       this.elements.progress.innerText = "100%";

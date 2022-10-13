@@ -33,7 +33,9 @@
 }
 .contact__heading__sans {
   @extend %title-goodness;
+  font-weight: 250;
   &::before {
+    font-weight: 250;
     content: attr(data-alt);
   }
 }

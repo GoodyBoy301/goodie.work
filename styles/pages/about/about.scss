@@ -6,6 +6,10 @@
   height: 100vh;
 }
 .about__heading {
+  display: none;
+  @include media("<phone") {
+    display: block;
+  }
 }
 .about__heading__wrapper {
   @extend %title-page;
@@ -36,8 +40,8 @@
 }
 .about__mobile__media {
   margin: 0 auto;
-  width: 20rem;
-  height: clamp(0rem, 25rem, 250px);
+  width: 24rem;
+  height: clamp(0rem, 32rem, 300px);
 }
 .about__mobile__image {
 }

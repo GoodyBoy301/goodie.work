@@ -37,11 +37,14 @@ export function enter(navWrapper) {
     autoAlpha: 1,
     clipPath: "polygon(0% 50%, 100% 50%, 100% 50%, 0% 50%)",
   });
-  tl.to(".navigation__list", {
-    autoAlpha: 1,
-    ease: "expo",
-    duration: 0.2,
-  });
+  tl.to(
+    ".navigation__list",
+    {
+      autoAlpha: 1,
+      delay: 3,
+    },
+    "-1"
+  );
 
   return tl;
 }

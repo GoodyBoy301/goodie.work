@@ -38,6 +38,7 @@
   @extend %link;
   font-weight: 600;
   text-transform: uppercase;
+  font-weight: 500;
   @include media("<phone") {
     font-size: clamp(0rem, 2.6rem, 30px);
   }

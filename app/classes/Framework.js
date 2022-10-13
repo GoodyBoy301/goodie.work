@@ -4,7 +4,7 @@ import Navigation from "components/Navigation";
 
 export default class Framework {
   constructor() {
-    this.isMobile = innerWidth < 768;
+    this.reCalculate();
     this.createPreloader();
     this.createContent();
     this.addEventListeners();
@@ -31,9 +31,13 @@ export default class Framework {
   }
   async onNavigate({ event }) {
     const [html, template] = await this.router.go(event);
+    this.page.destroy();
     this.content.innerHTML = html;
     this.content.setAttribute("data-template", template);
+    this.createContent();
     history.pushState({}, "", template);
+    this.page = this.pages[this.template];
+    this.page.create();
   }
 
   createContent() {

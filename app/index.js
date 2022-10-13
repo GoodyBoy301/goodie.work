@@ -9,6 +9,7 @@ class App extends Framework {
   constructor() {
     super();
     this.createPages();
+    this.update();
   }
 
   createPages() {
@@ -20,8 +21,13 @@ class App extends Framework {
       contact: new Contact(),
     };
     this.page = this.pages[this.template];
-    // this.page.create();
     this.createRouter();
+  }
+
+  update() {
+    this.page?.update && this.page.update();
+
+    this.frame = requestAnimationFrame(this.update.bind(this));
   }
 }
 

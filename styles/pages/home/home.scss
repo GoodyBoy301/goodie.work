@@ -29,7 +29,9 @@
 }
 .home__heading__sans {
   @extend %title-goodness;
+  font-weight: 250;
   &::before {
     content: attr(data-alt);
+    font-weight: 250;
   }
 }

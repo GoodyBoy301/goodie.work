@@ -5,11 +5,11 @@ import navigationHover from "animations/navigationHover";
 import * as pageTransition from "animations/pageTransition";
 
 const elements = {
-  home: "#home",
-  work: "#work",
-  about: "#about",
-  playground: "#playground",
-  contact: "#contact",
+  home: "#home, #Home",
+  work: "#work, #Work",
+  about: "#about, #About",
+  playground: "#playground, #Playground",
+  contact: "#contact, #Contact",
   homeHover: "#hoverHome",
   workHover: "#hoverWork",
   aboutHover: "#hoverAbout",
@@ -86,7 +86,7 @@ export default class Navigation extends Component {
   linkHoverListener(event) {
     if (this.isNavigating === true || this.isMobile) return;
     const [navHover] = this.elements.navHover;
-    const [content] = this.elements[`${event.target.id}Hover`];
+    const [content] = this.elements[`${event.target.id.toLowerCase()}Hover`];
     navHover.innerHTML = content.innerHTML;
     this.hoverAnimation.play();
   }
