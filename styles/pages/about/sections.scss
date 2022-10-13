@@ -1,6 +1,5 @@
 .about__sections__wrapper {
   @include media("<phone") {
-    // height: 100vh;
     display: grid;
     margin-top: 42.5vh;
     gap: clamp(0rem, 6.5rem, 65px);
@@ -12,51 +11,41 @@
   }
 }
 .about_me {
+  @include media("<phone") {
+    display: none;
+  }
 }
 .about__me__wrapper {
   @extend %screen-about;
-  @include media("<phone") {
-    width: clamp(0rem, 20rem, 250px);
-    margin-left: 2.4rem;
-  }
+  margin-top: 1.2rem;
 }
 .about__text {
   @extend %title-150-x;
   font-family: $font-serif;
   display: inline;
+  opacity: 0;
+  span {
+    display: inline-block;
+  }
 }
 .about__media {
   display: inline-block;
   @extend %about-images;
-  @include media("<phone") {
-    display: none;
-  }
-}
-.about__media[data-portal-image] {
-  @extend %portal-images;
-  display: inline-block;
-  @include media("<phone") {
-    display: none;
-  }
-
-  &:last-of-type {
-    width: 90rem;
-    margin: 0 6rem 0 auto;
-  }
+  background: $color-white;
   &:first-of-type {
-    width: 50rem;
-    margin: 0 4.5rem;
+    width: 17.5rem;
+    height: 22.5rem;
+    position: absolute;
+    margin: 0 0 0 2rem;
+    bottom: 52vh;
+    top: unset;
+    right: 4rem;
+  }
+  &:nth-of-type(2) {
+    margin-left: 2rem;
+    margin-right: 6rem;
   }
 }
 .about__media__image {
-}
-.about__experience {
-}
-.about__experience__wrapper {
-  @extend %screen-about;
-  gap: 0.3rem;
-  @include media("<phone") {
-    width: clamp(0rem, 18rem, 250px);
-    margin-right: unset;
-  }
+  opacity: 0;
 }
