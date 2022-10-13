@@ -29,6 +29,7 @@
     "include-media": "^1.4.10",
     "mini-css-extract-plugin": "^2.6.1",
     "nodemon": "^2.0.20",
+    "normalize-wheel": "^1.0.1",
     "postcss": "^8.4.17",
     "postcss-loader": "^7.0.1",
     "prefix": "^1.0.0",
