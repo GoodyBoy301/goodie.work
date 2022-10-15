@@ -47,4 +47,6 @@ html(lang="en")
     .content#content(data-template=template)
       block content
 
+    unless template === "work" || template === "playground"
+      include ./partials/footer
     script(src="main.js") 

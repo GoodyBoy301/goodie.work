@@ -10,6 +10,7 @@ export default class About extends Page {
       id: "about",
       elements: {
         texts: ".about__text",
+        medias: ".about__media",
         images: ".about__media__image",
       },
     });

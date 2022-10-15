@@ -21,6 +21,8 @@
 }
 
 .navigation__credit__link {
+  @extend %link;
+  color: $color-white;
   font-weight: 500;
 }
 

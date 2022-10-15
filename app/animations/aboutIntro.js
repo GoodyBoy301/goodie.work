@@ -1,8 +1,11 @@
 import gsap from "gsap";
 
-export default function aboutIntro({ spans, images }) {
+export default function aboutIntro({ spans, ...elements }) {
   const defaults = { ease: "power2", duration: 0.75 };
   const tl = gsap.timeline({ paused: true, defaults });
+
+  const images = Array.from(elements.images).slice(0, 2);
+  const flag = Array.from(elements.medias)[2];
 
   tl.set(".about__text", { opacity: 1 });
   tl.fromTo(
@@ -70,13 +73,11 @@ export default function aboutIntro({ spans, images }) {
   tl.fromTo(
     images,
     {
-      // height: "0%",
       autoAlpha: 0,
       scale: 1.5,
       clipPath: "polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)",
     },
     {
-      // height: "100%",
       autoAlpha: 1,
       scale: 1,
       duration: 2,
@@ -84,6 +85,34 @@ export default function aboutIntro({ spans, images }) {
       clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
     },
     0
+  );
+  tl.fromTo(
+    flag.childNodes[0],
+    {
+      autoAlpha: 1,
+      scale: 0.5,
+      clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
+    },
+    {
+      autoAlpha: 1,
+      scale: 1,
+      duration: 2,
+      stagger: 0.2,
+      clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
+    },
+    0
+  );
+  tl.fromTo(
+    flag,
+    {
+      width: 0,
+    },
+    {
+      width: "45rem",
+      duration: 1,
+      ease: "power1.in",
+    },
+    0.5
   );
 
   return tl;

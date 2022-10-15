@@ -26,6 +26,7 @@ class App extends Framework {
 
   update() {
     this.page?.update && this.page.update();
+    this.canvas?.update && this.canvas.update();
 
     this.frame = requestAnimationFrame(this.update.bind(this));
   }

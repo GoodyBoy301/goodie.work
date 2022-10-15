@@ -31,7 +31,6 @@
 }
 .navigation__list__item {
   @include media("<phone") {
-    // display: flex;
   }
 }
 .list__index {
@@ -61,5 +60,8 @@
   &::after {
     @extend %attr-small;
     content: attr(data-other-letters);
+    @include media("<phone") {
+      font-weight: 250;
+    }
   }
 }

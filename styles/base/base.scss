@@ -31,3 +31,7 @@ select,
 a {
   -webkit-tap-highlight-color: transparent;
 }
+
+canvas {
+  @extend %screen-full;
+}

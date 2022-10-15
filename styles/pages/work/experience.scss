@@ -35,12 +35,13 @@
       .work__experience__expand {
         opacity: 1;
         color: $color-black;
+        transform-origin: 100% 100%;
+        clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+        transition-delay: 0.2s;
       }
       .work__experience__subdetails {
-        // opacity: 0;
-        // color: $color-white;
-        // transform: scale(0);
         clip-path: polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%);
+        transform: translateY(100%);
       }
       .work__experience__title[data-long] {
         right: 167.5rem;
@@ -87,9 +88,9 @@
   left: 102.9rem;
   width: 34.8rem;
   opacity: 1;
-  // transition: all 0.2s $ease-out-expo;
-  transition: all 5s;
+  transition: all 0.5s $ease-out-expo;
   transform-origin: 100% 100%;
+  clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
 
   @include media("<phone") {
     transition: unset;
@@ -100,13 +101,14 @@
 }
 .work__experience__expand {
   opacity: 0;
-  transition: opacity 0.2s $ease-out-expo;
+  transition: all 4s $ease-out-expo;
   position: absolute;
   left: 70.5rem;
   width: 65.9rem;
   display: grid;
   padding: 3rem;
   gap: 1.5rem;
+  clip-path: polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%);
   @include media("<phone") {
     left: 52.5vw;
     opacity: 1;

@@ -1,12 +1,14 @@
 import Router from "classes/Router";
 import Preloader from "components/Preloader";
 import Navigation from "components/Navigation";
+import Canvas from "classes/Canvas";
 
 export default class Framework {
   constructor() {
     this.reCalculate();
     this.createPreloader();
     this.createContent();
+    // this.createCanvas();
     this.addEventListeners();
     this.createNavigation();
     this.createRouter();
@@ -25,19 +27,27 @@ export default class Framework {
     this.page.create();
   }
 
+  createCanvas() {
+    this.canvas = new Canvas();
+  }
+
   createNavigation() {
     this.navigation = new Navigation();
     this.navigation.addEventListener("completed", this.onNavigate.bind(this));
   }
-  async onNavigate({ event }) {
+  async onNavigate({ event, push = true }) {
     const [html, template] = await this.router.go(event);
     this.page.destroy();
     this.content.innerHTML = html;
     this.content.setAttribute("data-template", template);
     this.createContent();
-    history.pushState({}, "", template);
+    push && history.pushState({}, "", template);
     this.page = this.pages[this.template];
     this.page.create();
+  }
+  async onBack() {
+    const params = { target: { href: window.location.pathname } };
+    this.onNavigate({ event: params, push: false });
   }
 
   createContent() {
@@ -52,11 +62,13 @@ export default class Framework {
   onResize() {
     this.reCalculate && this.reCalculate();
     this.page.reCalculate && this.page.reCalculate();
+    this.canvas.reCalculate && this.canvas.reCalculate();
     this.router.reCalculate && this.router.reCalculate();
     this.navigation.reCalculate && this.navigation.reCalculate();
   }
 
   addEventListeners() {
     window.addEventListener("resize", this.onResize.bind(this));
+    window.addEventListener("popstate", this.onBack.bind(this));
   }
 }
