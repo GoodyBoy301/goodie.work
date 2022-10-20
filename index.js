@@ -25,9 +25,6 @@ app.get("/contact", (req, res) => {
 app.get("/:invalid", (req, res) => {
   res.redirect("/");
 });
-app.get("/404", (req, res) => {
-  res.send("Frontend Developer, Artist");
-});
 
 app.listen(port, () => {
   //Stylishly log hostname and port

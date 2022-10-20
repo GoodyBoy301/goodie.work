@@ -89,12 +89,10 @@ export default function aboutIntro({ spans, ...elements }) {
   tl.fromTo(
     flag.childNodes[0],
     {
-      autoAlpha: 1,
       scale: 0.5,
       clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
     },
     {
-      autoAlpha: 1,
       scale: 1,
       duration: 2,
       stagger: 0.2,

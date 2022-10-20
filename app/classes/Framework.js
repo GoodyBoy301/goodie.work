@@ -1,21 +1,22 @@
 import Router from "classes/Router";
 import Preloader from "components/Preloader";
 import Navigation from "components/Navigation";
-import Canvas from "classes/Canvas";
+import Canvas from "components/Canvas";
 
 export default class Framework {
   constructor() {
     this.reCalculate();
     this.createPreloader();
     this.createContent();
-    // this.createCanvas();
     this.addEventListeners();
     this.createNavigation();
     this.createRouter();
+    this.createCanvas();
   }
 
   reCalculate() {
     this.isMobile = innerWidth < 768;
+    this.canvas?.reCalculate();
   }
 
   createPreloader() {
@@ -25,10 +26,6 @@ export default class Framework {
   onPreloaded() {
     this.preloader.destroy();
     this.page.create();
-  }
-
-  createCanvas() {
-    this.canvas = new Canvas();
   }
 
   createNavigation() {
@@ -50,6 +47,10 @@ export default class Framework {
     this.onNavigate({ event: params, push: false });
   }
 
+  createCanvas() {
+    this.canvas = new Canvas();
+  }
+
   createContent() {
     this.content = document.querySelector(".content");
     this.template = this.content.getAttribute("data-template");
@@ -62,7 +63,6 @@ export default class Framework {
   onResize() {
     this.reCalculate && this.reCalculate();
     this.page.reCalculate && this.page.reCalculate();
-    this.canvas.reCalculate && this.canvas.reCalculate();
     this.router.reCalculate && this.router.reCalculate();
     this.navigation.reCalculate && this.navigation.reCalculate();
   }

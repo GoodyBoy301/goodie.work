@@ -9,7 +9,7 @@ class App extends Framework {
   constructor() {
     super();
     this.createPages();
-    this.update();
+    requestAnimationFrame(this.update.bind(this));
   }
 
   createPages() {
@@ -26,9 +26,8 @@ class App extends Framework {
 
   update() {
     this.page?.update && this.page.update();
-    this.canvas?.update && this.canvas.update();
-
-    this.frame = requestAnimationFrame(this.update.bind(this));
+    this.canvas?.update();
+    requestAnimationFrame(this.update.bind(this));
   }
 }
 

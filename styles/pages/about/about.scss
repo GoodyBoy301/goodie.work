@@ -3,7 +3,11 @@
 .about__wrapper {
 }
 .about__main {
-  height: 100vh;
+  display: none;
+  @include media("<phone") {
+    height: 100vh;
+    display: block;
+  }
 }
 .about__heading {
   display: none;

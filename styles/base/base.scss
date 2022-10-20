@@ -34,4 +34,5 @@ a {
 
 canvas {
   @extend %screen-full;
+  pointer-events: none;
 }
