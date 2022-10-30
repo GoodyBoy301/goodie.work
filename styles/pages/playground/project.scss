@@ -21,6 +21,7 @@
 }
 .playground__project {
   display: flex;
+  gap: 1.9rem;
   &:first-of-type {
     margin-left: 4.3rem;
     @include media("<phone") {
@@ -33,7 +34,6 @@
       margin-right: 0.5rem;
     }
   }
-  gap: 1.9rem;
   @include media("<phone") {
     flex-direction: column-reverse;
     margin: unset;
@@ -129,7 +129,7 @@
 }
 .playground__project__medias {
   display: flex;
-  gap: 0.6rem;
+  gap: 1.5rem;
 }
 .playground__project__media {
   @extend %project-images;

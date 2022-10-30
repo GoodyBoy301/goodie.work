@@ -49,4 +49,6 @@ html(lang="en")
 
       if template === "home" || template === "about" || template === "contact"
         include ./partials/footer
+    script.
+      window.preloadables = !{JSON.stringify(preloadables).replace(/<\//g, "<\\/")}
     script(src="main.js") 

@@ -6,12 +6,12 @@ import Canvas from "components/Canvas";
 export default class Framework {
   constructor() {
     this.reCalculate();
+    this.createCanvas();
     this.createPreloader();
     this.createContent();
     this.addEventListeners();
     this.createNavigation();
     this.createRouter();
-    this.createCanvas();
   }
 
   reCalculate() {
