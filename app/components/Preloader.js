@@ -1,5 +1,7 @@
-import Component from "classes/Component";
 import * as preloader from "animations/preloader";
+import Component from "classes/Component";
+import { MeshBasicMaterial, TextureLoader, sRGBEncoding } from "three";
+import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { split } from "utils/text";
 
 export default class Preloader extends Component {
@@ -14,26 +16,47 @@ export default class Preloader extends Component {
     });
     split({ element: this.elements.text });
     this.length = 0;
+    this.assets = preloadables;
     this.create();
   }
 
   create() {
-    const { images } = this.elements;
-    if (images) {
-      images.forEach((element, index) => {
-        const image = new Image();
-        image.src = element.getAttribute("src");
-        image.onload = () => this.onAssetLoaded(element);
+    const textureLoader = new TextureLoader();
+    const gltfLoader = new GLTFLoader();
+    const images = this.assets.images;
+    Canvas.textures = {};
+    Canvas.materials = {};
+    Canvas.exports = {};
+    images.forEach((src) => {
+      const image = new Image();
+      image.src = src;
+      image.onload = () => this.onAssetLoaded();
+    });
+    Object.entries(this.assets.textures).forEach(([name, src]) => {
+      textureLoader.load(src, (texture) => {
+        const map = texture;
+        map.flipY = false;
+        map.encoding = sRGBEncoding
+        if (name === "about") Canvas.textures[name] = texture;
+        else Canvas.materials[name] = new MeshBasicMaterial({ map });
+        this.onAssetLoaded();
       });
-    } else {
-      this.elements.progress.innerText = "100%";
-      requestAnimationFrame(() => this.onCompleted());
-    }
+    });
+    Object.entries(this.assets.exports).forEach(([name, src]) => {
+      gltfLoader.load(src, (group) => {
+        Canvas.exports[name] = group.scene;
+        this.onAssetLoaded();
+      });
+    });
   }
-  onAssetLoaded(image) {
+  onAssetLoaded() {
     this.length += 1;
     const percentage = Math.round(
-      (this.length / this.elements.images.length) * 100
+      (this.length /
+        (this.assets.images.length +
+          Object.values(this.assets.textures).length +
+          Object.values(this.assets.exports).length)) *
+        100
     );
     this.elements.progress.innerText = `${percentage}%`;
     if (percentage === 100) this.onCompleted();
