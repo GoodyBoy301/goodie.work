@@ -1,5 +1,5 @@
 .home {
-  pointer-events: none;
+  // pointer-events: none;
 }
 .home__wrapper {
   @extend %hard-center;
@@ -34,4 +34,22 @@
     content: attr(data-alt);
     font-weight: 250;
   }
+}
+
+.home__canvas {
+}
+.home__canvas__wrapper {
+  position: fixed;
+  width: 100%;
+  left: 0;
+  top: calc(50vh + 7rem);
+  bottom: 8rem;
+  @include media("<phone") {
+    bottom: max(4rem, 40px);
+  }
+}
+.home__canvas__illustration {
+  width: 50vw;
+  height: 100%;
+  margin: 0 auto 4rem;
 }
