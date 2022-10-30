@@ -1,4 +1,5 @@
 import Page from "classes/Page";
+import gsap from "gsap";
 import { lerp, clamp } from "utils/math";
 import Prefix from "prefix";
 import NormalizeWheel from "normalize-wheel";
@@ -12,6 +13,8 @@ export default class Playground extends Page {
         projectWrapper: ".playground__projects__wrapper",
         title: ".playground__heading__text",
         titleSpans: ".playground__heading__text span",
+        body: ".playground__body",
+        projects: ".playground__project",
       },
     });
   }
@@ -20,6 +23,7 @@ export default class Playground extends Page {
   create() {
     super.create();
     this.reCalculate();
+    this.createPalletes();
     this.transformPrefix = Prefix("transform");
   }
 
@@ -102,6 +106,21 @@ export default class Playground extends Page {
       element.style[
         this.transformPrefix
       ] = `translateX(${this.marquee[index].current}px)`;
+    });
+  }
+
+  createPalletes() {
+    const { body, projects } = this.elements;
+    projects.forEach((project) => {
+      project.onmouseover = () => this.changeColor(project);
+      project.onmouseleave = () => this.changeColor(body);
+    });
+  }
+  changeColor(element) {
+    gsap.to(this.elements.body, {
+      background: element.getAttribute("data-color"),
+      duration: 1,
+      ease: "expo",
     });
   }
 
