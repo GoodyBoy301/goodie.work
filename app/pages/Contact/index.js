@@ -1,4 +1,10 @@
+import { intro, outro } from "animations/mesh";
 import Page from "classes/Page";
+import gsap from "gsap";
+import { EffectComposer } from "three/addons/postprocessing/EffectComposer";
+import { RenderPass } from "three/addons/postprocessing/RenderPass";
+import { ShaderPass } from "three/addons/postprocessing/ShaderPass";
+import { LuminosityShader } from "three/addons/shaders/LuminosityShader";
 import { lerp } from "utils/math";
 
 export default class Home extends Page {
@@ -12,34 +18,37 @@ export default class Home extends Page {
     });
   }
 
-  async create() {
+  create() {
     super.create();
     this.reCalculate();
-    this.createGeometry();
-    this.createMaterial();
-    this.createMesh();
     this.placeMesh();
+    this.postProcess();
   }
 
   update() {
     if (this.mesh) this.updateMesh();
   }
+  predestroy() {
+    if (this.isMobile) return;
+    const animation = outro(this.mesh.children[0].material);
+    Canvas.navigate = async () => {
+      this.removeEventListeners && this.removeEventListeners();
+      gsap.to(this.element, { autoAlpha: 0 });
+      await animation.play();
+      Canvas.composer = null;
+      this.mesh.scale.set(0, 0, 0);
+    };
+  }
   destroy() {
-    super.destroy();
     Canvas.scene.remove(this.mesh);
   }
 
   reCalculate() {
     this.isMobile = innerWidth < 768;
-    this.scale = this.isMobile ? 0.5 : 0.35;
+    this.scale = this.isMobile ? 0.6 : 0.35;
     this.innerWidth = innerWidth;
     this.innerHeight = innerHeight;
-    this.mouseTracker = {
-      currentX: 0,
-      currentY: 0,
-      targetX: 0,
-      targetY: 0,
-    };
+
     this.bounds = this.elements.slot.getBoundingClientRect();
     this.width = this.bounds.width / innerWidth;
     this.height = this.bounds.height / innerHeight;
@@ -56,6 +65,8 @@ export default class Home extends Page {
     this.mesh.scale.z = this.height * Canvas.viewport.width * this.scale;
     this.mesh.position.x = this.x * Canvas.viewport.width;
     this.mesh.position.y = this.y * Canvas.viewport.height;
+
+    this.predestroy();
   }
 
   createGeometry() {
@@ -82,14 +93,36 @@ export default class Home extends Page {
     this.mesh.scale.z = this.height * Canvas.viewport.width * this.scale;
     this.mesh.position.x = this.x * Canvas.viewport.width;
     this.mesh.position.y = this.y * Canvas.viewport.height;
+
+    const animation = intro(this.mesh.children[0].material);
+    animation.play();
+
+    this.predestroy();
   }
   updateMesh() {
-    const x = lerp(this.mouseTracker.currentX, this.mouseTracker.targetX, 0.1);
-    const y = lerp(this.mouseTracker.currentY, this.mouseTracker.targetY, 0.1);
+    const x = lerp(
+      Canvas.mouseTracker.currentX,
+      Canvas.mouseTracker.targetX,
+      0.1
+    );
+    const y = lerp(
+      Canvas.mouseTracker.currentY,
+      Canvas.mouseTracker.targetY,
+      0.1
+    );
     this.mesh.rotation.x = y;
     this.mesh.rotation.y = x;
-    this.mouseTracker.currentX = x;
-    this.mouseTracker.currentY = y;
+    Canvas.mouseTracker.currentX = x;
+    Canvas.mouseTracker.currentY = y;
+  }
+
+  postProcess() {
+    const composer = new EffectComposer(Canvas.renderer);
+    const renderPass = new RenderPass(Canvas.scene, Canvas.camera);
+    composer.addPass(renderPass);
+    const effectGrayScale = new ShaderPass(LuminosityShader);
+    composer.addPass(effectGrayScale);
+    Canvas.composer = composer;
   }
 
   onMouseMove(event) {
@@ -98,8 +131,8 @@ export default class Home extends Page {
     const clientY = event.touches ? event.touches[0]?.clientY : event.clientY;
     target.x = (clientX / this.innerWidth - 0.5) * 2;
     target.y = (clientY / this.innerHeight - 0.5) * 0.25;
-    this.mouseTracker.targetX = target.x;
-    this.mouseTracker.targetY = target.y;
+    Canvas.mouseTracker.targetX = target.x;
+    Canvas.mouseTracker.targetY = target.y;
   }
 
   addEventListeners() {
