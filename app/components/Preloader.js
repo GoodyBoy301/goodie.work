@@ -16,7 +16,7 @@ export default class Preloader extends Component {
       },
     });
     split({ element: this.elements.text });
-    this.length = 0;
+    this.length = 1; //or 0
     this.limit = 301; //or 100
     this.assets = preloadables;
     this.create();
