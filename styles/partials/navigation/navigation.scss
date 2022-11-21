@@ -4,10 +4,9 @@
   @extend %body;
   @extend %whiten;
   padding-top: unset;
-  // padding-right: unset;
+  pointer-events: none;
   height: 17.3rem;
   top: calc(50vh - 17.3rem / 2);
-  // z-index: $z-1;
   @include media("<phone") {
     transition: background 0.2s 0.2s;
     background: $color-black;
@@ -18,11 +17,14 @@
     padding-right: 2.4rem;
     flex-direction: column;
     justify-content: unset;
+    pointer-events: unset;
   }
 }
 .navigation__list {
+  pointer-events: all;
   @extend %row;
   width: 100%;
+  opacity:0;
   @include media("<phone") {
     flex-direction: column;
     align-items: flex-end;
