@@ -24,7 +24,7 @@ export default class Framework {
     this.preloader.addEventListener("preloaded", this.onPreloaded.bind(this));
   }
   onPreloaded() {
-    this.preloader.destroy();
+    this.createPages();
     this.page.create();
   }
 

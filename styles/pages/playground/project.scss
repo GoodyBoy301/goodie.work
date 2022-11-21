@@ -16,7 +16,8 @@
   pointer-events: auto;
   @include media("<phone") {
     top: 47.5vh;
-    gap: unset;
+    gap: 1.6rem;
+    padding: 0 1.6rem;
   }
 }
 .playground__project {
@@ -135,4 +136,6 @@
   @extend %project-images;
 }
 .playground__project__image {
+  border-radius: 1rem;
+  opacity: 0;
 }

@@ -41,7 +41,7 @@ export function enter(navWrapper) {
     ".navigation__list",
     {
       autoAlpha: 1,
-      delay: 3,
+      delay: 4.5,
     },
     "-1"
   );

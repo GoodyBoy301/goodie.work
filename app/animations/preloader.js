@@ -33,6 +33,6 @@ export function leave() {
       },
       "-1"
     );
-    tl.to(".preloader", { autoAlpha: 0, ease: "expo" });
+    tl.to(".preloader", { autoAlpha: 0, duration: 1 });
   });
 }

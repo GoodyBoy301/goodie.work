@@ -1,7 +1,7 @@
 import gsap from "gsap";
 
 export default function menuClick() {
-  const tl = gsap.timeline({ paused: true });
+  const tl = gsap.timeline({ paused: true, onComplete: Canvas.navigate });
 
   tl.fromTo(
     ".hamburger__icon path:first-of-type",

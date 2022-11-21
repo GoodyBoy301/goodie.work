@@ -19,8 +19,8 @@ export default function aboutIntro({ spans, ...elements }) {
   tl.fromTo(
     spans[1],
     {
-      x: "100%",
-      clipPath: "polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%)",
+      x: "-100%",
+      clipPath: "polygon(100% 0%, 100% 0%, 100% 100%, 100% 100%)",
     },
     { x: 0, clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)" },
     0
@@ -110,7 +110,7 @@ export default function aboutIntro({ spans, ...elements }) {
       duration: 1,
       ease: "power1.in",
     },
-    0.5
+    0
   );
 
   return tl;

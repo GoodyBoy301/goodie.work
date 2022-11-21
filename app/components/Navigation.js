@@ -101,6 +101,7 @@ export default class Navigation extends Component {
     if (this.isNavigating) return;
     if (this.isMobile) {
       if (this.menuAnimation.done) {
+        Canvas.navigate();
         this.menuAnimation.reverse();
         await this.dispatchEvent({ type: "completed", event });
         this.menuAnimation.reverse();
@@ -109,6 +110,7 @@ export default class Navigation extends Component {
         this.onMenuClick();
       }
     } else {
+      Canvas.navigate();
       this.isNavigating = true;
       this.hoverAnimation.progress(1);
       await this.transitionOut.restart();
