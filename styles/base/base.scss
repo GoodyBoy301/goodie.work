@@ -12,6 +12,7 @@ body {
   min-height: 100vh;
   user-select: none;
   -webkit-user-drag: none;
+  overflow: hidden;
 }
 
 ::-webkit-scrollbar {
@@ -32,7 +33,22 @@ a {
   -webkit-tap-highlight-color: transparent;
 }
 
+h1 {
+  opacity: 0;
+}
+[data-subTitle] {
+  opacity: 0;
+  span {
+    opacity: 0;
+  }
+}
+
 canvas {
   @extend %screen-full;
   pointer-events: none;
+  z-index: 4;
+  transition: opacity 1s $ease-out-expo;
+  @include media("<phone") {
+    z-index: 3;
+  }
 }
