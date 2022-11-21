@@ -8,7 +8,6 @@ import Framework from "classes/Framework";
 class App extends Framework {
   constructor() {
     super();
-    this.createPages();
     requestAnimationFrame(this.update.bind(this));
   }
 
