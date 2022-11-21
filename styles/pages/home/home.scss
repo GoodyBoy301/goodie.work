@@ -10,6 +10,9 @@
   }
 }
 .home__heading {
+  @include media("<phone") {
+    pointer-events: none;
+  }
 }
 .home__heading__wrapper {
 }
@@ -21,7 +24,7 @@
 }
 .home__heading__serif {
   @extend %title-goodness;
-  font-style: italic;
+  // font-style: italic;
   font-family: $font-serif;
   &::after {
     content: attr(data-alt);
