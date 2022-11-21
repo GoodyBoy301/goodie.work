@@ -40,10 +40,28 @@
     bottom: 52vh;
     top: unset;
     right: 4rem;
+    img {
+      transition: 2s $ease-out-expo;
+      filter: grayscale(0);
+    }
+    img:hover {
+      filter: grayscale(1);
+    }
   }
   &:nth-of-type(2) {
     margin-left: 2rem;
     margin-right: 6rem;
+    height: 12rem;
+    width: 50rem;
+    margin: 0 3.7rem 0 2.6rem;
+    right: 0.5rem;
+    img {
+      transition: 2s $ease-out-expo;
+      filter: grayscale(0);
+    }
+    img:hover {
+      filter: grayscale(1);
+    }
   }
 }
 .about__media__image {
