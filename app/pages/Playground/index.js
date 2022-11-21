@@ -1,8 +1,9 @@
 import Page from "classes/Page";
 import gsap from "gsap";
-import { lerp, clamp } from "utils/math";
-import Prefix from "prefix";
 import NormalizeWheel from "normalize-wheel";
+import Prefix from "prefix";
+import { clamp, lerp } from "utils/math";
+import Reveal from "classes/Reveal";
 
 export default class Playground extends Page {
   constructor() {
@@ -25,6 +26,16 @@ export default class Playground extends Page {
     this.reCalculate();
     this.createPalletes();
     this.transformPrefix = Prefix("transform");
+    this.Revealer = new Reveal({
+      elements: { images: ".playground__project__image" },
+    });
+  }
+  update() {
+    this.scroll && this.smoothScroll();
+    this.elements?.titleSpans && this.movetext();
+  }
+  destroy() {
+    this.Revealer.observer.disconnect();
   }
 
   reCalculate() {
@@ -45,11 +56,6 @@ export default class Playground extends Page {
         speed: 1,
       });
     });
-  }
-
-  update() {
-    this.scroll && this.smoothScroll();
-    this.elements?.titleSpans && this.movetext();
   }
 
   onMousewheel(event) {
@@ -101,8 +107,6 @@ export default class Playground extends Page {
         return;
       }
       this.marquee[index].current -= this.marquee[index].speed;
-      if (this.marquee[index].current < this.marquee[index].end)
-        this.marquee[index].current = this.marquee[index].start;
       element.style[
         this.transformPrefix
       ] = `translateX(${this.marquee[index].current}px)`;
@@ -123,6 +127,7 @@ export default class Playground extends Page {
       ease: "expo",
     });
   }
+  tint() {}
 
   addEventListeners() {
     window.addEventListener("mousewheel", this.onMousewheel.bind(this));
