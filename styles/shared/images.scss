@@ -8,13 +8,14 @@
 }
 
 %project-images {
-  height: 18.5rem;
-  width: 38rem;
+  height: calc(19.75rem * 0.85);
+  width: calc(38rem * 0.85);
+  overflow: hidden;
   &:first-of-type {
-    height: 24.9rem;
+    height: calc(24.9rem * 0.85);
   }
   &:last-of-type {
-    height: 22.7rem;
+    height: calc(22.7rem * 0.85);
   }
   @include media("<phone") {
     height: clamp(0rem, 15.5rem, 150px);
