@@ -1,10 +1,11 @@
-import Page from "classes/Page";
-import { split } from "utils/text";
 import aboutIntro from "animations/aboutIntro";
-import flagIntro from "animations/flagIntro";
+import { intro, outro } from "animations/flag";
+import Page from "classes/Page";
+import gsap from "gsap";
 import fragmentShader from "shaders/About/flag-fragment.glsl";
 import vertexShader from "shaders/About/flag-vertex.glsl";
-import { Mesh, ShaderMaterial, TextureLoader, PlaneGeometry } from "three";
+import { Mesh, PlaneGeometry, ShaderMaterial, TextureLoader } from "three";
+import { split } from "utils/text";
 
 export default class About extends Page {
   constructor() {
@@ -23,9 +24,6 @@ export default class About extends Page {
   create() {
     super.create();
     this.reCalculate();
-    !this.geometry && this.createGeometry();
-    !this.material && this.createMaterial();
-    !this.mesh && this.createMesh();
     this.placeMesh();
 
     this.elements.texts.forEach((element) => {
@@ -33,15 +31,27 @@ export default class About extends Page {
     });
     this.elements.spans = document.querySelectorAll(".about__text span");
     const introAnimation = aboutIntro(this.elements);
-    introAnimation.play();
-    console.log(this.mesh.position);
+    const temp = setTimeout(() => {
+      introAnimation.play();
+      clearTimeout(temp);
+    }, 1500);
   }
   update() {
     if (!this.material) return;
     this.material.uniforms.uTime.value = Canvas.time.elapsed;
   }
-  destroy() {
-    Canvas.scene.remove(this.mesh);
+  predestroy() {
+    if (this.isMobile) return;
+    const animation = outro(
+      this.mesh.material.uniforms.uOpacity,
+      this.mesh.material.uniforms.uShade
+    );
+    Canvas.navigate = async () => {
+      this.removeEventListeners && this.removeEventListeners();
+      gsap.to(this.element, { autoAlpha: 0 });
+      await animation.play();
+      Canvas.scene.remove(this.mesh);
+    };
   }
 
   reCalculate() {
@@ -56,27 +66,32 @@ export default class About extends Page {
     this.x =
       -(innerWidth / 2 - this.bounds.left - this.bounds.width / 2) / innerWidth;
     this.initialx = -(innerWidth / 2 - this.bounds.left) / innerWidth;
+    this.finalx =
+      -(innerWidth / 2 - this.bounds.left) / innerWidth + this.width;
 
     if (!this.mesh) return;
     this.mesh.scale.x = this.width * Canvas.viewport.width;
     this.mesh.scale.y = this.height * Canvas.viewport.height;
     this.mesh.position.x = this.x * Canvas.viewport.width;
     this.mesh.position.y = this.y * Canvas.viewport.height;
+
+    this.predestroy();
   }
 
   createGeometry() {
     this.geometry = new PlaneGeometry(1, 1, 32, 32);
   }
   createMaterial() {
-    const texture = new TextureLoader().load(
-      this.flagImage.getAttribute("src")
-    );
+    const texture = new TextureLoader().load("/images/flag.jpg");
     this.material = new ShaderMaterial({
       vertexShader,
       fragmentShader,
+      transparent: true,
       uniforms: {
         uTexture: { value: texture },
         uTime: { value: 0 },
+        uOpacity: { value: 1 },
+        uShade: { value: 1 },
       },
     });
   }
@@ -87,6 +102,7 @@ export default class About extends Page {
   placeMesh() {
     const position = this.mesh.position;
     const scale = this.mesh.scale;
+    const opacity = this.mesh.material.uniforms.uOpacity;
     const x = {
       initial: this.initialx,
       position: this.x,
@@ -95,10 +111,12 @@ export default class About extends Page {
     };
 
     !this.isMobile && Canvas.scene.add(this.mesh);
-    const animation = flagIntro({ position, scale, x });
+    const animation = intro({ position, scale, x, opacity });
     animation.play();
 
     this.mesh.scale.y = this.height * Canvas.viewport.height;
     this.mesh.position.y = this.y * Canvas.viewport.height;
+
+    this.predestroy();
   }
 }
