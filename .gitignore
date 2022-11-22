@@ -8,6 +8,7 @@ pnpm-debug.log*
 lerna-debug.log*
 
 node_modules
+modules
 dist
 dist-ssr
 *.local
@@ -26,3 +27,5 @@ pnpm-lock.yaml
 
 *.hot-update.json
 *.hot-update.js
+
+.env
