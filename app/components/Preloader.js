@@ -65,7 +65,7 @@ export default class Preloader extends Component {
           Object.values(this.assets.exports).length)) *
         this.limit
     );
-    this.elements.progress.innerText = `${percentage} / 301`;
+    this.elements.progress.innerText = `${Math.min(percentage, 301)} / 301`;
     if (percentage === this.limit) this.onCompleted();
   }
 
