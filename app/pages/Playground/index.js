@@ -81,7 +81,7 @@ export default class Playground extends Page {
     const clientX = event.clientX || event.touches[0]?.clientX;
     const clientY = event.clientY || event.touches[0]?.clientY;
     const client =
-      this.scroll.last.x - clientX * 0.2 + this.scroll.last.y - clientY * 0.2;
+      this.scroll.last.x - clientX * 0.1 + this.scroll.last.y - clientY * 0.1;
     const pixel = clamp(0, this.scroll.target + client, this.scroll.limit);
     this.scroll.target = pixel < 0 ? 0 : pixel;
   }
