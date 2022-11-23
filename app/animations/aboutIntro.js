@@ -87,6 +87,22 @@ export default function aboutIntro({ spans, ...elements }) {
     0
   );
   tl.fromTo(
+    ".about__mobile__image",
+    {
+      autoAlpha: 0,
+      scale: 1.2,
+      clipPath: "polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)",
+    },
+    {
+      autoAlpha: 1,
+      scale: 1,
+      duration: 2,
+      stagger: 0.2,
+      clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
+    },
+    0
+  );
+  tl.fromTo(
     flag.childNodes[0],
     {
       scale: 0.5,
