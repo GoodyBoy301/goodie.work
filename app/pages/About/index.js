@@ -4,7 +4,7 @@ import Page from "classes/Page";
 import gsap from "gsap";
 import fragmentShader from "shaders/About/flag-fragment.glsl";
 import vertexShader from "shaders/About/flag-vertex.glsl";
-import { Mesh, PlaneGeometry, ShaderMaterial, TextureLoader } from "three";
+import { Mesh, PlaneGeometry, ShaderMaterial } from "three";
 import { split } from "utils/text";
 
 export default class About extends Page {
@@ -16,6 +16,7 @@ export default class About extends Page {
         texts: ".about__text",
         medias: ".about__media",
         images: ".about__media__image",
+        video: ".about__mobile__image",
       },
     });
   }
@@ -25,6 +26,7 @@ export default class About extends Page {
     super.create();
     this.reCalculate();
     this.placeMesh();
+    this.elements.video.play();
 
     this.elements.texts.forEach((element) => {
       split({ element });
@@ -82,7 +84,7 @@ export default class About extends Page {
     this.geometry = new PlaneGeometry(1, 1, 32, 32);
   }
   createMaterial() {
-    const texture = new TextureLoader().load("/images/flag.jpg");
+    const texture = Canvas.textures[this.id];
     this.material = new ShaderMaterial({
       vertexShader,
       fragmentShader,

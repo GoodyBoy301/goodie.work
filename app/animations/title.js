@@ -35,8 +35,8 @@ export function bigTitle() {
     },
     {
       autoAlpha: 1,
-      duration: 1.5,
-      stagger: { amount: 0.8, grid: [2, 4], axis: "x" },
+      duration: 1.2,
+      stagger: { amount: 0.5, grid: [2, 4], axis: "x" },
     },
     0.5
   );

@@ -5,11 +5,12 @@ export default class Reveal extends Component {
   constructor(params) {
     super(params);
     this.animateIn = params.animateIn || this[params.animateIn] || this.curtain;
+    this.threshold = params.threshold || 0.75
     this.createObserver();
   }
 
   createObserver() {
-    const options = { threshold: 0.9 };
+    const options = { threshold: this.threshold };
 
     this.observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {

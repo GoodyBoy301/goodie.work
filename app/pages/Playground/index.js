@@ -43,7 +43,7 @@ export default class Playground extends Page {
     this.scroll = {
       current: 0,
       target: 0,
-      last: { x: 0, y: 0 },
+      last: { x: 0, y: 0, clientX: 0, clientY: 0 },
       limit: this.elements.projectWrapper.clientWidth - window.innerWidth,
     };
     this.marquee = [];
@@ -80,6 +80,13 @@ export default class Playground extends Page {
     if (!this.isDown) return;
     const clientX = event.clientX || event.touches[0]?.clientX;
     const clientY = event.clientY || event.touches[0]?.clientY;
+
+    if (clientX === this.scroll.last.clientX) return;
+    if (clientY === this.scroll.last.clientY) return;
+
+    this.scroll.last.clientX = clientX;
+    this.scroll.last.clientY = clientY;
+
     const client = this.scroll.last.x - clientX + this.scroll.last.y - clientY;
     const pixel = clamp(0, this.scroll.target + client, this.scroll.limit);
     this.scroll.target = pixel < 0 ? 0 : pixel;
