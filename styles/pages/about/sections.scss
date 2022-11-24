@@ -40,6 +40,7 @@
     bottom: 52vh;
     top: unset;
     right: 4rem;
+    overflow: hidden;
     video {
       transition: 2s $ease-out-expo;
       filter: grayscale(0);

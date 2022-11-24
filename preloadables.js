@@ -6,8 +6,6 @@ preloadables.images = [
   "/images/endl_3.webp",
   "/images/flag.jpg",
   "/images/goody.webp",
-  "/images/goody.webm",
-  // "https://i.ibb.co/9nQSCkF/goody.gif",
   "/images/howdy_1.webp",
   "/images/howdy_2.webp",
   "/images/howdy_3.webp",
@@ -21,6 +19,7 @@ preloadables.images = [
   "/images/vsl_2.webp",
   "/images/vsl_3.webp",
 ];
+preloadables.videos = ["/images/goody.webm"];
 preloadables.textures = {
   home: "/images/baked.jpg",
   about: "/images/flag.jpg",

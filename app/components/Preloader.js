@@ -16,7 +16,7 @@ export default class Preloader extends Component {
       },
     });
     split({ element: this.elements.text });
-    this.length = 1; //or 0
+    this.length = 0;
     this.limit = 301; //or 100
     this.assets = preloadables;
     this.create();
@@ -26,6 +26,7 @@ export default class Preloader extends Component {
     const textureLoader = new TextureLoader();
     const gltfLoader = new GLTFLoader();
     const images = this.assets.images;
+    const videos = this.assets.videos;
     Canvas.textures = {};
     Canvas.materials = {};
     Canvas.exports = {};
@@ -33,6 +34,11 @@ export default class Preloader extends Component {
       const image = new Image();
       image.src = src;
       image.onload = () => this.onAssetLoaded();
+    });
+    videos.forEach((src) => {
+      const video = document.createElement("video");
+      video.src = src;
+      video.oncanplaythrough = () => this.onAssetLoaded();
     });
     Object.entries(this.assets.textures).forEach(([name, src]) => {
       textureLoader.load(src, (texture) => {
@@ -61,6 +67,7 @@ export default class Preloader extends Component {
     const percentage = Math.round(
       (this.length /
         (this.assets.images.length +
+          this.assets.videos.length +
           Object.values(this.assets.textures).length +
           Object.values(this.assets.exports).length)) *
         this.limit

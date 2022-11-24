@@ -55,6 +55,9 @@ export default class About extends Page {
       Canvas.scene.remove(this.mesh);
     };
   }
+  destroy() {
+    Canvas.scene.remove(this.mesh);
+  }
 
   reCalculate() {
     this.isMobile = innerWidth < 768;
