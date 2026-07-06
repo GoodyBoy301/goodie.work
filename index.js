@@ -33,12 +33,15 @@ app.get("/contact", (req, res) => {
     preloadables,
   });
 });
-app.get("/:invalid", (req, res) => {
-  res.redirect("/");
-});
+
 app.get("/cv", (req, res) => {
   res.redirect("https://drive.google.com/file/d/1qCjZhpYeHLCzlg_NDcG49qwAuebItn7X/view?usp=sharing");
 });
+
+app.get("/:invalid", (req, res) => {
+  res.redirect("/");
+});
+
 
 app.listen(port, () => {
   //Stylishly log hostname and port
